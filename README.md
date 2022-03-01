@@ -1,3 +1,1 @@
-# React Course
-
-Building a Food Order App
+# A Food Order App 
