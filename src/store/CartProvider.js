@@ -41,6 +41,31 @@ const cartReducer = (state, action) => {
     };
   }
 
+  if (action.type === "REMOVE") {
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.id
+    );
+
+    const existingItem = state.items[existingCartItemIndex];
+    const updatedTotalAmount = state.totalAmount - existingItem.price;
+
+    let updatedItems;
+
+    if (existingItem.amount === 1) {
+      // which means it's the last item of that type, so we need to remove entire item(array)
+      updatedItems = state.items.filter(item => item.id !== action.id); // With this check we make sure that all items where the id is not equal to the action id are kept
+    } else {
+      const updatedItem = { ...existingItem, amount: existingItem.amount - 1 }; // updatedItem is just a copy of existingItem in a new object with the spread operator.
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    }
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
   return defaultCartState; // returning actually new state
 };
 
