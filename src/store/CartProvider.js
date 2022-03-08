@@ -9,27 +9,32 @@ const defaultCartState = {
 };
 
 const cartReducer = (state, action) => {
+
   if (action.type === "ADD") {
     const updatedItems = state.items.concat(action.item); // we don't want to edit our old state snapshot, instead we generate new brand state object
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
-
+      
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
+      
     };
   }
+ 
   return defaultCartState; // returning actually new state
 };
+
 
 const CartProvider = (props) => {
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
-    defaultCartState
+    defaultCartState 
   );
-
+ 
   const addItemToCartHandler = (item) => {
     dispatchCartAction({ type: "ADD", item: item });
+    
   };
 
   const removeItemFromCartHandler = (id) => {
