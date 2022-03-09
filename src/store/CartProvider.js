@@ -52,7 +52,7 @@ const cartReducer = (state, action) => {
     let updatedItems;
 
     if (existingItem.amount === 1) {
-      // which means it's the last item of that type, so we need to remove entire item(array)
+      // which means it is the last item of that type, so we need to remove entire item(array)
       updatedItems = state.items.filter(item => item.id !== action.id); // With this check we make sure that all items where the id is not equal to the action id are kept
     } else {
       const updatedItem = { ...existingItem, amount: existingItem.amount - 1 }; // updatedItem is just a copy of existingItem in a new object with the spread operator.
