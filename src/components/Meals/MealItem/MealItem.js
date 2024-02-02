@@ -9,7 +9,7 @@ const MealItem = (props) => {
   
   const addToCartHandler = (amount) => {
      
-    cartCtx.addItem({  // creating an object on fly
+    cartCtx.addItem({   
       id: props.id,
       name: props.name,
       amount: amount,

@@ -38,7 +38,7 @@ const Cart = (props) => {
         }),
       }
     );
-    setIsSumbitting(false); // once fetch is done
+    setIsSumbitting(false);
     setDidSubmit(true);
     cartCtx.clearCart();
   };
@@ -52,9 +52,6 @@ const Cart = (props) => {
           amount={item.amount}
           price={item.price}
           cartItemAddHandler
-          // null, idem.id and item,this ensures that the id  of to be added or removed item
-          // is passed here, bind is the pre-configures function for future execution and basically allows you to pre-configure the argument
-          // that function will receive when it's being executed.
           onRemove={cartItemRemoveHandler.bind(null, item.id)}
           onAdd={cartItemAddHandler.bind(null, item)}
         />

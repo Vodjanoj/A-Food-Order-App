@@ -5,13 +5,10 @@ import CartContext from "../../store/cart-context";
 import classes from "./HeaderCartButton.module.css";
 
 const HeaderCartButton = (props) => {
-  // the header cart button component will be a re-evaluated
-  // by react whenever the context changes (in CartProvider component), connection is established
-
   const [btnIsHighlighted, setbtnIsHighlighted] = useState(false);
   const cartCtx = useContext(CartContext);
 
-  const { items } = cartCtx; // object destructiring
+  const { items } = cartCtx;
 
   const numberOfCartItems = items.reduce((curNumber, item) => {
     return curNumber + item.amount;
@@ -30,9 +27,9 @@ const HeaderCartButton = (props) => {
 
     const timer = setTimeout(() => {
       setbtnIsHighlighted(false);
-    }, 300); // duration of animation in .bump class in css, in 300  seconds we set a state btnIsHighlighted to false
+    }, 300);
 
-    return () => { // a cleanup function
+    return () => {
       clearTimeout(timer);
     };
   }, [items]);

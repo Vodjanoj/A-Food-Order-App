@@ -17,7 +17,6 @@ function App() {
 
   return (
     <CartProvider>
-      {/* all components in the app need access to Cart so we wrap them with CartProvider */}
       {carIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
       <main>
